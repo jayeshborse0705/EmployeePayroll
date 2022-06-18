@@ -12,10 +12,14 @@
                 Console.WriteLine("1: Establish Connection");
                 Console.WriteLine("2: Close Connection");
                 Console.WriteLine("3: Add Employee Data");
+                Console.WriteLine("4: Update Employee Data");
                 Console.WriteLine("0: Exit");
                 option = int.Parse(Console.ReadLine());
                 switch (option)
                 {
+                    case 0:
+                        Console.WriteLine("Exit");
+                        break;
                     case 1:
                         employeeDetail.EstablishConnection();
                         break;
@@ -58,10 +62,24 @@
                         empPayroll.NetPay = Net;
                         employeeDetail.InsertEmployeeData(empPayroll);
                         break;
+                    case 4:
+                        Console.WriteLine("Enter the ID");
+                        int Id = Convert.ToInt32(Console.ReadLine());
+                        empPayroll.ID = Id;
+                        Console.WriteLine("Enter the Name");
+                        string name1 = Console.ReadLine();
+                        empPayroll.Name = name1;
+                        Console.WriteLine("Enter Basic Pay");
+                        double basicpay1 = Convert.ToInt64(Console.ReadLine());
+                        empPayroll.BasicPay = basicpay1;
+                        employeeDetail.UpdateSalary(empPayroll);
+                        break;
+                    default:
+                        Console.WriteLine("Enter a valid Input");
+                        break;
                 }
             }
             while (option != 0);
-        } 
-
+        }
     }
 }
